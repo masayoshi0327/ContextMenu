@@ -20,10 +20,9 @@ struct ContentView: View {
                 .foregroundColor(colors1[evID])
                 .frame(width: 250)
             VStack{
-                Text(evs[evID])
-                    .padding()
-                Image(systemName: "sparkles")
-                    .contextMenu(ContextMenu(menuItems: {
+                Image(systemName: "sparkles") //このビューを長押しするとメニューが現れるようにする
+                    //ここからがコンテキストメニュー
+                    .contextMenu(menuItems: {
                         ForEach(0..<9) { n in
                             Button(action: {
                                 evID = n
@@ -31,7 +30,10 @@ struct ContentView: View {
                                 Text(evs[n])
                             })
                         }
-                    }))
+                    })
+                    //ここまでがコンテキストメニュー
+                Text(evs[evID])
+                    .padding()
             }
             .font(.title)
             .foregroundColor(colors2[evID])
